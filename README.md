@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Market Mania
 
-# Run and deploy your AI Studio app
+A stock market trading and idle financial simulation game.
 
-This contains everything you need to run your app locally.
+**Live site:** https://market-mania-clicker.vercel.app
 
-View your app in AI Studio: https://ai.studio/apps/b54fb0e0-85d6-4560-b2e0-e07c0b16210b
+![Market Mania screenshot](screenshot.png)
 
-## Run Locally
+## Features
 
-**Prerequisites:**  Node.js
+- Scrolling market ticker with live net worth and unrealized gains
+- Buy and sell stocks with 1 / 10 / 100 / max quantity presets, unlocking new tickers as you go
+- Leverage, loans and generators for passive income
+- A click-to-earn coin with floating profit pops
+- Income, upgrades, achievements and prestige tabs
+- Auto-saved progress, with a reset in Settings
+- Light and dark themes, high contrast and color-blind modes, reduced motion and sound controls
 
+## Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- [Vite](https://vite.dev/)
+- React
+- TypeScript
+- Hosted on [Vercel](https://vercel.com)
