@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Mania</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="description" content="A stock market trading and idle financial simulation game.">
+<link rel="canonical" href="https://market-mania.vercel.app/">
+<meta property="og:title" content="Market Mania">
+<meta property="og:description" content="A stock market trading and idle financial simulation game.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* ==========================================================================
    CSS VARIABLES & THEMES
@@ -134,7 +141,7 @@ button, .qty-btn, .action-btn, .gen-buy, .upg-buy, .setting-btn, .stock-tab, .lo
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, .15); position: relative; display: flex; flex-direction: column; }
 .right-panel { position: absolute; inset: 0; display: flex; flex-direction: column; }
 .tab-pane { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-.panel-title { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); font-weight: 800; margin: 0 0 14px 0; display: flex; align-items: center; gap: 8px; }
+.panel-title { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); font-weight: 700; margin: 0 0 14px 0; display: flex; align-items: center; gap: 8px; }
 .panel-title::before { content: ''; display: inline-block; width: 3px; height: 12px; border-radius: 2px; background: var(--teal); flex-shrink: 0; }
 
 .stock-tabs, .leverage-scroll { display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; margin-bottom: 14px; padding-bottom: 6px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
@@ -156,7 +163,7 @@ button, .qty-btn, .action-btn, .gen-buy, .upg-buy, .setting-btn, .stock-tab, .lo
 /* ── Trading & Charts ── */
 .stock-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
 .stock-name { font-size: 15px; font-weight: 600; }
-.stock-price { font-family: var(--font-mono); font-size: 28px; font-weight: 800; letter-spacing: -.01em; }
+.stock-price { font-family: var(--font-mono); font-size: 28px; font-weight: 700; letter-spacing: -.01em; }
 
 .chart-wrap { position: relative; height: 170px; margin: 10px 0 16px; cursor: crosshair; }
 svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
@@ -170,13 +177,11 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 .qty-btn:active:not(:disabled) { transform: scale(.93); box-shadow: none; }
 .qty-btn.active { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); }
 
-.action-btn { font-family: var(--font-mono); font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 7px; border: none; cursor: pointer; flex: 1; min-width: 100px; transition: transform .08s, filter .1s, box-shadow .1s; }
+.action-btn { font-family: var(--font-mono); font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 7px; border: none; cursor: pointer; flex: 1; min-width: 100px; transition: filter .12s; }
 .buy-btn { background: var(--teal); color: var(--btn-buy-text); }
 .sell-btn { background: var(--red); color: var(--btn-sell-text); }
-.buy-btn:not(:disabled):hover, .sell-btn:not(:disabled):hover { filter: brightness(1.12); transform: translateY(-2px); }
-.buy-btn:not(:disabled):hover { box-shadow: 0 4px 14px rgba(46, 230, 184, .35); }
-.sell-btn:not(:disabled):hover { box-shadow: 0 4px 14px rgba(255, 93, 106, .35); }
-.buy-btn:not(:disabled):active, .sell-btn:not(:disabled):active { transform: scale(.94); filter: brightness(.95); box-shadow: none; }
+.buy-btn:not(:disabled):hover, .sell-btn:not(:disabled):hover { filter: brightness(1.08); }
+.buy-btn:not(:disabled):active, .sell-btn:not(:disabled):active { filter: brightness(.95); }
 .buy-btn:disabled, .sell-btn:disabled { opacity: .35; cursor: not-allowed; }
 
 .locked-box { height: 334px; box-sizing: border-box; text-align: center; padding: 30px 10px; color: var(--text-dim); display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -239,7 +244,7 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 .loan-info-box { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; }
 .loan-info-item { display: flex; flex-direction: column; gap: 4px; }
 .loan-info-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); font-weight: 700; }
-.loan-info-val { font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text); }
+.loan-info-val { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text); }
 .loan-item-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 .loan-btn { font-family: var(--font-mono); font-weight: 700; font-size: 13px; padding: 10px 14px; border-radius: 7px; border: none; cursor: pointer; transition: transform .08s, filter .1s, box-shadow .1s; }
 .loan-btn:not(:disabled):hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 4px 14px rgba(0,0,0,.25); }
@@ -262,9 +267,9 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 .prestige-tree { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px; }
 .prestige-node { background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 12px; cursor: pointer; transition: all .2s; position: relative; }
 .prestige-node.locked { opacity: .45; cursor: not-allowed; border-style: dashed; }
-.prestige-node.available { border-color: var(--gold); background: linear-gradient(135deg, rgba(244, 196, 48, .1), rgba(244, 196, 48, .04)); box-shadow: 0 0 12px rgba(244, 196, 48, .12); }
-.prestige-node.available:hover { background: linear-gradient(135deg, rgba(244, 196, 48, .18), rgba(244, 196, 48, .08)); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(244, 196, 48, .2); }
-.prestige-node.owned { border-color: var(--teal); background: linear-gradient(135deg, var(--teal-dim), rgba(46, 230, 184, .06)); cursor: default; }
+.prestige-node.available { border-color: var(--gold); background: rgba(244, 196, 48, .08); }
+.prestige-node.available:hover { background: rgba(244, 196, 48, .14); }
+.prestige-node.owned { border-color: var(--teal); background: var(--teal-dim); cursor: default; }
 .prestige-node-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
 .prestige-node-cost { font-family: var(--font-mono); font-size: 11px; color: var(--gold); margin-bottom: 6px; }
 .prestige-node.owned .prestige-node-cost { color: var(--teal); }
@@ -281,7 +286,7 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 .achieve-desc { font-size: 10.5px; color: var(--text-dim); line-height: 1.35; }
 .achieve-reward { font-size: 10.5px; color: var(--gold); font-family: var(--font-mono); margin-top: 2px; }
 
-.achieve-toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--gold); border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; z-index: 1500; box-shadow: 0 8px 24px rgba(0, 0, 0, .5), 0 0 20px rgba(244, 196, 48, .2); animation: toast-in .4s cubic-bezier(.34, 1.56, .64, 1) forwards; }
+.achieve-toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--gold); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; z-index: 1500; box-shadow: 0 8px 24px rgba(0, 0, 0, .4); animation: toast-in .25s ease forwards; }
 @keyframes toast-in { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .achieve-toast-icon { font-size: 32px; flex-shrink: 0; }
 .achieve-toast-body { display: flex; flex-direction: column; gap: 2px; }
@@ -301,10 +306,9 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 .settings-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); display: flex; align-items: center; justify-content: center; z-index: 10000; animation: fade-in 0.2s; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 .settings-modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; max-width: 480px; width: 92%; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); }
-.settings-cog { position: fixed; bottom: 15px; right: 15px; width: 42px; height: 42px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 19px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; }
-.settings-cog svg { width: 60%; height: 60%; color: inherit; fill: currentColor; }
-.settings-cog:hover { transform: scale(1.1); color: var(--gold); border-color: var(--gold); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
-.settings-cog:active { transform: scale(0.9); }
+.settings-cog { position: fixed; bottom: 15px; right: 15px; width: 40px; height: 40px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; transition: color .15s, border-color .15s; }
+.settings-cog svg { width: 18px; height: 18px; color: inherit; }
+.settings-cog:hover { color: var(--gold); border-color: var(--gold); }
 .settings-section { margin-bottom: 20px; }
 .settings-section:last-child { margin-bottom: 0; }
 .settings-section-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); font-weight: 700; margin-bottom: 8px; }
@@ -345,7 +349,8 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
 </svg>
 
 <div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
-<div class="app">
+<main class="app">
+  <h1 style="font-size:16px;font-weight:700;letter-spacing:.04em;margin:0 0 12px;color:var(--text);">Market Mania</h1>
   <div class="stats">
     <div class="stat-block"><div class="stat-label">Net Worth</div><div class="stat-value" id="netWorthValue">$0.00</div></div>
     <div class="stat-block"><div class="stat-label" id="pnlLabel">Unrealized Gains</div><div class="stat-value" id="pnlValue">$0.00</div></div>
@@ -367,7 +372,7 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
         
         <!-- Tab Content Panes -->
         <div id="incomePane" class="tab-pane">
-          <div class="penny-zone"><div class="penny" id="pennyBtn"><span style="transform:translateY(-2px);display:inline-block;">⭐</span></div><div class="penny-hint" id="coinValueHint">$0.01 / click</div></div>
+          <div class="penny-zone"><button type="button" class="penny" id="pennyBtn" aria-label="Click coin to earn cash"><svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor" style="color:#422c00;"><path d="M12 2L14.9 8.6L22 9.2L16.6 13.9L18.2 21L12 17.3L5.8 21L7.4 13.9L2 9.2L9.1 8.6L12 2Z"/></svg></button><div class="penny-hint" id="coinValueHint">$0.01 / click</div></div>
           <div id="genQtyToggle" style="flex-shrink:0;"></div>
           <div class="gen-scroll" id="genScroll"><div id="genList"></div></div>
           <div class="rate-summary">Passive income: <b id="rateSummary">$0.00/sec</b></div>
@@ -389,18 +394,18 @@ svg.chart { width: 100%; height: 100%; overflow: visible; display: block; }
       </div>
     </div>
   </div>
-</div>
+</main>
 
 <div id="settingsModal" class="settings-modal" style="display:none;">
   <div class="settings-modal-box">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
       <h2 style="margin:0;font-size:18px;">Settings</h2>
-      <button id="closeSettingsBtn" style="background:transparent;border:none;color:var(--text);font-size:18px;cursor:pointer;">✕</button>
+      <button id="closeSettingsBtn" aria-label="Close settings" style="background:transparent;border:none;color:var(--text);font-size:18px;cursor:pointer;">X</button>
     </div>
     <div id="settingsPane"></div>
   </div>
 </div>
-<div id="settingsCog" class="settings-cog" title="Settings">⚙️</div>
+<button type="button" id="settingsCog" class="settings-cog" title="Settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
 
 <script>
 (function(){
